@@ -13,9 +13,8 @@ import NextLink from "next/link";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
-import { TwitterIcon, GithubIcon, DiscordIcon, Logo } from "@/components/icons";
+import { TwitterIcon, DiscordIcon, Logo } from "@/components/icons";
 import {
-  ConnectButton,
   useConnectModal,
   useActiveAccount,
   Blobbie,
@@ -54,7 +53,7 @@ export const Navbar = () => {
             className="flex justify-start items-center gap-1"
             href="https://www.yieldguild.io/"
           >
-            <Logo />
+            {/* <Logo /> */}
             <p className="font-bold text-inherit">Yield Guild Games</p>
           </NextLink>
         </NavbarBrand>

@@ -1,6 +1,7 @@
 import { getDefaultToken } from "thirdweb/react";
 import { base } from "thirdweb/chains";
 import { SellerPaymentInfoInterface } from "@/types/PaymentInfo.types";
+
 const YGG_WALLET = process.env.NEXT_PUBLIC_SELLER_WALLET_ADDRESS as string;
 
 enum CURRENCIES {
