@@ -7,7 +7,8 @@ import { title } from '@/components/primitives';
 import { PayEmbed } from 'thirdweb/react';
 import { client } from '@/config/Thirdweb/client';
 import { SellerPaymentInfoInterface } from '@/types/PaymentInfo.types';
-import { TEST_MODE } from '@/utils/constants/global.constants';
+import { TEST_MODE } from '@/utils/constants/paymentInfo.constants';
+
 interface PaymentInfoComponentProps {
     SELLER_PAYMENT_INFO: SellerPaymentInfoInterface; // Adjust the type according to the structure of GAP_PAYMENT_INFO
 }
