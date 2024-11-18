@@ -1,23 +1,26 @@
-![tw-banner](https://github.com/thirdweb-example/next-starter/assets/57885104/20c8ce3b-4e55-4f10-ae03-2fe4743a5ee8)
+# YGG Partner Payment Portal
 
-# thirdweb-nextui-org-starter
+## Description
 
-Starter template to build custom UI components with [thirdweb](https://thirdweb.com/) and [NextUI v2](https://nextui.org/).
+This app is an external payment portal for partners sending YGG rewards. This is connected to the main YGG partner dashboard & Airtable.
+This app is meant to be connected to the main dashboard to be explicit.
+
+## Linked Technical documentation:
+
+-   [Overview of YGG Partner Client Dashboard](https://ve-technologies.notion.site/YGG-Partner-Dashboard-V1-13ea201b8383809aba10e662b8be35f4?pvs=4)
+
+## TODOs
+
+-   Connect to a viable testnet network for dev & staging versions of the
+
+## Infrastructure
+
+-   This app is connected to YGG's Vercel environment. If you need to change anything on the infrastructure side please visit YGG's Vercel organization.
 
 ## Installation
 
-### 1. Clone the template or [fork](https://github.com/thirdweb-example/thirdweb-nextui-org-starter.git/fork)
-```bash
-git clone https://github.com/thirdweb-example/thirdweb-nextui-org-starter.git
-```
-
-### 2. Set up environment variables
-Create a file called `.env.local` (at the root level of your project) with the following content:
-```
-NEXT_PUBLIC_TEMPLATE_CLIENT_ID="<your-thirdweb-client-id"
-```
-
-To learn how to create a client ID, refer to the [client documentation](https://portal.thirdweb.com/typescript/v5/client).
+-   To learn how to create a client ID, refer to the [client documentation](https://portal.thirdweb.com/typescript/v5/client).
+-   Please contact Jen for Thirdweb access as Thirdweb only allows single users for their organizations currently.
 
 ### 3. Install the dependencies
 
@@ -30,7 +33,7 @@ yarn
 
 # pnpm
 pnpm install
-``` 
+```
 
 ## Run locally
 
@@ -52,27 +55,21 @@ Preview the production build
 yarn start
 ```
 
-## About this template
+## About the Payment Portal App
 
-- Custom thirdweb Connect button built with NextUI [Button](https://nextui.org/docs/components/button)
+-   The original base code was refactored from [ThirdWeb Next UI starter](https://github.com/thirdweb-example/thirdweb-nextui-org-starter.git/fork)
 
-- thirdweb [Bobbie Component](https://portal.thirdweb.com/references/typescript/v5/Blobbie) to generate gradiant based on wallet address
+-   Custom thirdweb Connect button built with NextUI [Button](https://nextui.org/docs/components/button)
 
-- [`useConnectModal`](https://portal.thirdweb.com/references/typescript/v5/useConnectModal) hook that allows you to open the Connect UI in a Modal to prompt the user to connect wallet.
+-   thirdweb [Bobbie Component](https://portal.thirdweb.com/references/typescript/v5/Blobbie) to generate gradiant based on wallet address
 
-- [`useWalletDetailsModal`](https://portal.thirdweb.com/react/v5/useWalletDetailsModal) hook to open the Wallet Details Modal that shows various information about the connected wallet and allows users to perform various actions like sending funds, receiving funds, switching networks, Buying tokens, etc.
+-   [`useConnectModal`](https://portal.thirdweb.com/references/typescript/v5/useConnectModal) hook that allows you to open the Connect UI in a Modal to prompt the user to connect wallet.
 
-Custom component found in [`components/navbar.tsx`](https://github.com/thirdweb-example/thirdweb-nextui-org-starter/blob/main/components/navbar.tsx#L87)
+-   [`useWalletDetailsModal`](https://portal.thirdweb.com/react/v5/useWalletDetailsModal) hook to open the Wallet Details Modal that shows various information about the connected wallet and allows users to perform various actions like sending funds, receiving funds, switching networks, Buying tokens, etc.
 
+## Resources for Thirdweb
 
-
-## Resources
-
-- [Documentation](https://portal.thirdweb.com/typescript/v5)
-- [Templates](https://thirdweb.com/templates)
-- [YouTube](https://www.youtube.com/c/thirdweb)
-- [Blog](https://blog.thirdweb.com)
-
-## Need help?
-
-For help or feedback, please [visit our support site](https://thirdweb.com/support)
+-   [Documentation](https://portal.thirdweb.com/typescript/v5)
+-   [Templates](https://thirdweb.com/templates)
+-   [YouTube](https://www.youtube.com/c/thirdweb)
+-   [Blog](https://blog.thirdweb.com)
