@@ -1,11 +1,10 @@
 import { getDefaultToken } from 'thirdweb/react';
-import { base, sepolia } from 'thirdweb/chains';
+import { base, baseSepolia } from 'thirdweb/chains';
 import { SellerPaymentInfoInterface } from '@/types/PaymentInfo.types';
 
 export const TEST_MODE = process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? false : true;
 
-// TODO: Fix testnet that's compatible with USDC
-const chain = TEST_MODE === true ? sepolia : base;
+const chain = TEST_MODE === true ? baseSepolia : base;
 
 export const YGG_WALLET = process.env.NEXT_PUBLIC_SELLER_WALLET_ADDRESS as string;
 
@@ -22,7 +21,7 @@ export const GUILD_ADVANCEMENT_PROGRAM_PAYMENT_INFO: SellerPaymentInfoInterface 
         sellerAddress: YGG_WALLET,
         chain,
         amount: '10000',
-        token: getDefaultToken(base, CURRENCIES.USDC)
+        token: getDefaultToken(chain, CURRENCIES.USDC)
     }
 };
 
@@ -35,7 +34,7 @@ export const FUTURE_OF_WORK_PAYMENT_INFO: SellerPaymentInfoInterface = {
         sellerAddress: YGG_WALLET,
         chain,
         amount: '10000',
-        token: getDefaultToken(base, CURRENCIES.USDC)
+        token: getDefaultToken(chain, CURRENCIES.USDC)
     }
 };
 
@@ -48,7 +47,7 @@ export const GAME_TESTING_PAYMENT_INFO: SellerPaymentInfoInterface = {
         sellerAddress: YGG_WALLET,
         chain,
         amount: '1000',
-        token: getDefaultToken(base, CURRENCIES.USDC)
+        token: getDefaultToken(chain, CURRENCIES.USDC)
     }
 };
 
@@ -61,6 +60,6 @@ export const TEST_PAYMENT_INFO: SellerPaymentInfoInterface = {
         sellerAddress: YGG_WALLET,
         chain,
         amount: '1',
-        token: getDefaultToken(base, CURRENCIES.USDC)
+        token: getDefaultToken(chain, CURRENCIES.USDC)
     }
 };
