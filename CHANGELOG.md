@@ -19,4 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Added YGG specific copy and assets
 -   Added utilities, types, constants, and reusable payment embed page.
 
+## [0.0.2] - 2024-11-19
+
+### Added
+
+-   Discount code feature for making payments to YGG
+    -   Discount code can only be applied once and not stacked with other codes
+    -   Discount code can notify user if successful or insuccessfully applied
+
 ## [Unreleased]
