@@ -37,6 +37,7 @@ export async function fetchDiscountCodes(): Promise<DiscountCodesType> {
         });
     } catch (error) {
         console.error('Error fetching discount codes from Airtable:', error);
+        throw error;
     }
 
     return discountCodes;
