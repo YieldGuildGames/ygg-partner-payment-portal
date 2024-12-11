@@ -27,4 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     -   Discount code can only be applied once and not stacked with other codes
     -   Discount code can notify user if successful or insuccessfully applied
 
+## [0.0.3] - 2024-12-11
+
+### Added
+
+    - More usable/scalable discount code system which uses airable to fetch discount codes as set by partnership team.
+
 ## [Unreleased]
