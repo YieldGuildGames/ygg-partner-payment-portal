@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { title } from '@/components/primitives';
 import { PayEmbed } from 'thirdweb/react';
 import { client } from '@/config/Thirdweb/client';
@@ -7,7 +7,7 @@ import { SellerPaymentInfoInterface } from '@/types/PaymentInfo.types';
 import { TEST_MODE } from '@/utils/constants/paymentInfo.constants';
 import { Input } from '@nextui-org/input';
 import { Popover, PopoverTrigger, PopoverContent, Button } from '@nextui-org/react';
-import { DISCOUNT_CODES } from '@/utils/constants/discountCodes.constants';
+import { fetchDiscountCodes, DiscountCodesType } from '@/helpers/airtable.helpers';
 
 interface PaymentInfoComponentProps {
     SELLER_PAYMENT_INFO: SellerPaymentInfoInterface; // Adjust the type according to the structure of GAP_PAYMENT_INFO
@@ -17,17 +17,29 @@ const PaymentInfoComponent: React.FC<PaymentInfoComponentProps> = ({ SELLER_PAYM
     const [discountCode, setDiscountCode] = useState('');
     const [sellerPaymentInfo, setSellerPaymentInfo] = useState(SELLER_PAYMENT_INFO);
     const [discountApplied, setDiscountApplied] = useState(false);
+    const [discountCodes, setDiscountCodes] = useState<DiscountCodesType>({});
 
-    // TODO: implement a more secure version for discount code checking, for an MVP this will do for now. We'll implement something on server side.
     // We have the partnership team and Marielle checking and approving the Quest packages for total rewards, contract signign etc, so there's a human in the loop to verify if anyone abuses this anyways.
+    useEffect(() => {
+        async function getDiscountCodes() {
+            try {
+                const response = await fetch('/api/discount-codes');
+                const codes = await response.json();
+                setDiscountCodes(codes);
+            } catch (error) {
+                console.error('Error fetching discount codes:', error);
+            }
+        }
 
+        getDiscountCodes();
+    }, []);
     const handleDiscountCodeChange = (e: any) => {
         setDiscountCode(e.target.value);
         setDiscountApplied(false);
     };
 
     const applyDiscount = () => {
-        const discountPercentage = DISCOUNT_CODES[discountCode.toUpperCase()];
+        const discountPercentage = discountCodes[discountCode.toUpperCase()];
         if (discountPercentage) {
             const originalAmount = parseFloat(SELLER_PAYMENT_INFO.paymentInfo.amount);
             const discountAmount = (originalAmount * discountPercentage) / 100;
