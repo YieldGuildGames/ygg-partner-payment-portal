@@ -18,9 +18,7 @@ Airtable.configure({
 
 const airtableBase = Airtable.base(AIRTABLE_BASE_ID);
 
-export type DiscountCodesType = {
-    [key: string]: number;
-};
+export type DiscountCodesType = Record<string, number>;
 
 export async function fetchDiscountCodes(): Promise<DiscountCodesType> {
     const discountCodes: DiscountCodesType = {};
@@ -31,12 +29,14 @@ export async function fetchDiscountCodes(): Promise<DiscountCodesType> {
         records.forEach((record) => {
             const code = record.get('Name') as string;
             const discount = record.get('Discount Amount') as number;
-            if (code && discount) {
+            const status = record.get('Status') as string;
+
+            if (code && discount && status === 'Active') {
                 discountCodes[code] = discount;
             }
         });
     } catch (error) {
-        console.error('Error fetching discount codes from Airtable:', error);
+        console.error('Error fetching discount codes from Airtable');
         throw error;
     }
 

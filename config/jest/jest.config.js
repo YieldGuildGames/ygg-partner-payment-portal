@@ -6,8 +6,8 @@ module.exports = {
     setupFiles: ['config/config'],
     setupFilesAfterEnv: ['./config/jest/jest.setup.js'],
     transform: {
-        '^.+\\.(ts|tsx|js|jsx)$': ['babel-jest', { configFile: './.babelrc' }],
-
+        // '^.+\\.(ts|tsx|js|jsx)$': ['babel-jest', { configFile: './.babelrc' }],
+        '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest', // Removed configFile
         '^.+\\.svg$': '<rootDir>/svgTransform.js'
     },
     moduleNameMapper: {

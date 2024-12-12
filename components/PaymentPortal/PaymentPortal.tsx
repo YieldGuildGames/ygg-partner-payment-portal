@@ -7,7 +7,7 @@ import { SellerPaymentInfoInterface } from '@/types/PaymentInfo.types';
 import { TEST_MODE } from '@/utils/constants/paymentInfo.constants';
 import { Input } from '@nextui-org/input';
 import { Popover, PopoverTrigger, PopoverContent, Button } from '@nextui-org/react';
-import { fetchDiscountCodes, DiscountCodesType } from '@/helpers/airtable.helpers';
+import { DiscountCodesType } from '@/helpers/airtable.helpers';
 
 interface PaymentInfoComponentProps {
     SELLER_PAYMENT_INFO: SellerPaymentInfoInterface; // Adjust the type according to the structure of GAP_PAYMENT_INFO

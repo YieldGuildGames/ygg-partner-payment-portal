@@ -35,9 +35,9 @@ jest.mock('airtable', () => {
 
 describe('fetchDiscountCodes', () => {
     const mockRecords = [
-        { get: (field: string) => (field === 'Name' ? 'SAVE10' : 10) },
-        { get: (field: string) => (field === 'Name' ? 'SAVE20' : 20) },
-        { get: (field: string) => (field === 'Name' ? 'SAVE30' : 30) }
+        { get: (field: string) => (field === 'Name' ? 'SAVE10' : field === 'Amount' ? 10 : 'Active') },
+        { get: (field: string) => (field === 'Name' ? 'SAVE20' : field === 'Amount' ? 20 : 'Inactive') },
+        { get: (field: string) => (field === 'Name' ? 'SAVE30' : field === 'Amount' ? 30 : 'Active') }
     ];
 
     beforeEach(() => {
@@ -50,10 +50,9 @@ describe('fetchDiscountCodes', () => {
         mockAll.mockResolvedValue(mockRecords);
     });
 
-    it('should fetch discount codes from Airtable', async () => {
+    it('should fetch active discount codes from Airtable', async () => {
         const expectedDiscountCodes: DiscountCodesType = {
             SAVE10: 10,
-            SAVE20: 20,
             SAVE30: 30
         };
 
