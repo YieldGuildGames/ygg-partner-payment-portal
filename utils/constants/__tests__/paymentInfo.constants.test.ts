@@ -1,7 +1,3 @@
-// paymentInfo.constants.test.ts
-
-import { SellerPaymentInfoInterface } from '@/types/PaymentInfo.types';
-
 jest.mock('thirdweb/react', () => ({
     getDefaultToken: jest.fn()
 }));
@@ -10,6 +6,7 @@ jest.mock('thirdweb/chains', () => ({
     base: {},
     baseSepolia: {}
 }));
+
 describe('constants Test Suite ', () => {
     describe('paymentInfo.constants Test Suite ', () => {
         const originalEnv = process.env;
