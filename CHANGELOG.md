@@ -42,4 +42,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
     - App runs on pnpm now
 
+## [0.0.4] - 2024-12-12
+
+### Added
+
+- Product Telemetry added
+    - Posthog.com
+- Frontend Observability added
+    - Sentry.io
+
 ## [Unreleased]

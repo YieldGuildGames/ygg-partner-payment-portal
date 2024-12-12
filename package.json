@@ -1,6 +1,6 @@
 {
     "name": "ygg-partner-payment-portal",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "private": true,
     "engines": {
         "node": "18.x.x"
@@ -28,6 +28,7 @@
         "@nextui-org/theme": "2.2.11",
         "@react-aria/ssr": "3.9.4",
         "@react-aria/visually-hidden": "3.8.12",
+        "@sentry/nextjs": "^8",
         "airtable": "^0.12.2",
         "clsx": "2.1.1",
         "dotenv": "^16.4.7",
