@@ -33,42 +33,44 @@ jest.mock('airtable', () => {
     };
 });
 
-describe('fetchDiscountCodes', () => {
-    const mockRecords = [
-        { get: (field: string) => (field === 'Name' ? 'SAVE10' : field === 'Amount' ? 10 : 'Active') },
-        { get: (field: string) => (field === 'Name' ? 'SAVE20' : field === 'Amount' ? 20 : 'Inactive') },
-        { get: (field: string) => (field === 'Name' ? 'SAVE30' : field === 'Amount' ? 30 : 'Active') }
-    ];
+describe('airtable helpers Test Suite', () => {
+    describe('fetchDiscountCodes', () => {
+        const mockRecords = [
+            { get: (field: string) => (field === 'Name' ? 'SAVE10' : field === 'Discount Amount' ? 10 : 'Active') },
+            { get: (field: string) => (field === 'Name' ? 'SAVE20' : field === 'Discount Amount' ? 20 : 'Inactive') },
+            { get: (field: string) => (field === 'Name' ? 'SAVE30' : field === 'Discount Amount' ? 30 : 'Active') }
+        ];
 
-    beforeEach(() => {
-        jest.clearAllMocks();
+        beforeEach(() => {
+            jest.clearAllMocks();
 
-        // Get the mocked 'all' method
-        const mockAll = ((Airtable.base as jest.Mock)() as jest.Mock)('tableName').select().all as jest.Mock;
+            // Get the mocked 'all' method
+            const mockAll = ((Airtable.base as jest.Mock)() as jest.Mock)('tableName').select().all as jest.Mock;
 
-        // Mock the 'all' method to resolve with mockRecords
-        mockAll.mockResolvedValue(mockRecords);
-    });
+            // Mock the 'all' method to resolve with mockRecords
+            mockAll.mockResolvedValue(mockRecords);
+        });
 
-    it('should fetch active discount codes from Airtable', async () => {
-        const expectedDiscountCodes: DiscountCodesType = {
-            SAVE10: 10,
-            SAVE30: 30
-        };
+        it('should fetch active discount codes from Airtable', async () => {
+            const expectedDiscountCodes: DiscountCodesType = {
+                SAVE10: 10,
+                SAVE30: 30
+            };
 
-        const discountCodes = await fetchDiscountCodes();
-        expect(discountCodes).toEqual(expectedDiscountCodes);
-    });
+            const discountCodes = await fetchDiscountCodes();
+            expect(discountCodes).toEqual(expectedDiscountCodes);
+        });
 
-    it('should handle errors gracefully', async () => {
-        const errorMessage = 'Error fetching discount codes';
+        it('should handle errors gracefully', async () => {
+            const errorMessage = 'Error fetching discount codes';
 
-        // Get the mocked 'all' method
-        const mockAll = ((Airtable.base as jest.Mock)() as jest.Mock)('tableName').select().all as jest.Mock;
+            // Get the mocked 'all' method
+            const mockAll = ((Airtable.base as jest.Mock)() as jest.Mock)('tableName').select().all as jest.Mock;
 
-        // Mock the 'all' method to reject with an error
-        mockAll.mockRejectedValue(new Error(errorMessage));
+            // Mock the 'all' method to reject with an error
+            mockAll.mockRejectedValue(new Error(errorMessage));
 
-        await expect(fetchDiscountCodes()).rejects.toThrow(errorMessage);
+            await expect(fetchDiscountCodes()).rejects.toThrow(errorMessage);
+        });
     });
 });
