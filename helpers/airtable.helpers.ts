@@ -16,7 +16,7 @@ Airtable.configure({
     apiKey: AIRTABLE_API_KEY
 });
 
-const base = Airtable.base(AIRTABLE_BASE_ID);
+const airtableBase = Airtable.base(AIRTABLE_BASE_ID);
 
 export type DiscountCodesType = {
     [key: string]: number;
@@ -26,7 +26,7 @@ export async function fetchDiscountCodes(): Promise<DiscountCodesType> {
     const discountCodes: DiscountCodesType = {};
 
     try {
-        const records = await base(AIRTABLE_TABLE_NAME).select().all();
+        const records = await airtableBase(AIRTABLE_TABLE_NAME).select().all();
 
         records.forEach((record) => {
             const code = record.get('Name') as string;
