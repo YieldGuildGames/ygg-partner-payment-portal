@@ -37,23 +37,28 @@ jest.mock('airtable', () => {
 });
 
 describe('airtable helpers Test Suite', () => {
+    const originalEnv = process.env;
+
+    const mockRecords = [
+        { get: (field: string) => (field === 'Name' ? 'SAVE10' : field === 'Discount Amount' ? 10 : 'Active') },
+        { get: (field: string) => (field === 'Name' ? 'SAVE20' : field === 'Discount Amount' ? 20 : 'Inactive') },
+        { get: (field: string) => (field === 'Name' ? 'SAVE30' : field === 'Discount Amount' ? 30 : 'Active') }
+    ];
+    beforeEach(() => {
+        jest.clearAllMocks();
+
+        // Get the mocked 'all' method
+        const mockAll = ((Airtable.base as jest.Mock)() as jest.Mock)('tableName').select().all as jest.Mock;
+
+        // Mock the 'all' method to resolve with mockRecords
+        mockAll.mockResolvedValue(mockRecords);
+    });
+    afterEach(() => {
+        process.env = originalEnv; // Restore original process.env
+        jest.clearAllMocks(); // Clear all mocks
+    });
+
     describe('fetchDiscountCodes', () => {
-        const mockRecords = [
-            { get: (field: string) => (field === 'Name' ? 'SAVE10' : field === 'Discount Amount' ? 10 : 'Active') },
-            { get: (field: string) => (field === 'Name' ? 'SAVE20' : field === 'Discount Amount' ? 20 : 'Inactive') },
-            { get: (field: string) => (field === 'Name' ? 'SAVE30' : field === 'Discount Amount' ? 30 : 'Active') }
-        ];
-
-        beforeEach(() => {
-            jest.clearAllMocks();
-
-            // Get the mocked 'all' method
-            const mockAll = ((Airtable.base as jest.Mock)() as jest.Mock)('tableName').select().all as jest.Mock;
-
-            // Mock the 'all' method to resolve with mockRecords
-            mockAll.mockResolvedValue(mockRecords);
-        });
-
         it('should fetch active discount codes from Airtable', async () => {
             const expectedDiscountCodes: DiscountCodesType = {
                 SAVE10: 10,
