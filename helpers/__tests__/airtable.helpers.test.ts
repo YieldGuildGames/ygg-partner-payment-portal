@@ -6,6 +6,9 @@ jest.mock('airtable', () => {
     // Mock the 'all' method
     const mockAll = jest.fn();
 
+    process.env.AIRTABLE_BASE_ID = 'mocked_base_id';
+    process.env.AIRTABLE_API_KEY = 'mocked_api_key';
+
     // Mock the 'select' method to return an object with 'all'
     const mockSelect = jest.fn(() => ({
         all: mockAll
