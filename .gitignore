@@ -9,6 +9,9 @@
 # testing
 /coverage
 
+# Shortest
+*.shortest/
+
 # next.js
 /.next/
 /out/
@@ -38,3 +41,4 @@ next-env.d.ts
 
 # Sentry Config File
 .env.sentry-build-plugin
+
