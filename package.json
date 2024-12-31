@@ -12,8 +12,8 @@
         "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix",
         "test:ci": "jest --config ./config/jest/jest.config.js --setupFiles dotenv/config --maxWorkers=2 --ci",
         "test": "jest --config ./config/jest/jest.config.js --setupFiles dotenv/config",
-        "ai-testing": "npx shortest",
-        "ai-testing-headless": "npx shortest --headless",
+        "ai-e2e-test": "npx shortest",
+        "ai-e2e-test-headless": "npx shortest --headless",
         "validate-circle-ci": "circleci config validate"
     },
     "dependencies": {
