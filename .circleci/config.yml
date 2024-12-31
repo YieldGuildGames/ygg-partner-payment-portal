@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-    test:
+    unit-and-integration-tests:
         docker:
             - image: node:18.17.0-slim
         steps:
@@ -10,10 +10,10 @@ jobs:
                   name: Install dependencies
                   command: pnpm install
             - run:
-                  name: Run tests
+                  name: unit-and-integration-tests
                   command: pnpm run test:ci
 
-    ai-e2e-test:
+    ai-e2e-tests:
         docker:
             - image: node:18.17.0-slim
         steps:
@@ -22,7 +22,7 @@ jobs:
                   name: Install dependencies
                   command: pnpm install
             - run:
-                  name: Run AI E2E tests
+                  name: ai-e2e-tests
                   command: pnpm run ai-e2e-test:ci
 
 workflows:
