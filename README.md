@@ -92,7 +92,7 @@ See more on [this here](https://docs.anthropic.com/en/docs/build-with-claude/com
 ```bash
 pnpm run ai-e2e-testing
 
-pnpm run ai-e2e-testing-headless
+pnpm run ai-e2e-testing:ci
 
 ```
 
