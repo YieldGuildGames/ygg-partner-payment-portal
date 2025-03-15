@@ -42,19 +42,19 @@ pnpm install
 Start development server
 
 ```bash
-yarn dev
+pnpm run dev
 ```
 
 Create a production build
 
 ```bash
-yarn build
+pnpm run build
 ```
 
 Preview the production build
 
 ```bash
-yarn start
+pnpm start
 ```
 
 ## About the Payment Portal App
@@ -75,3 +75,25 @@ yarn start
 - [Templates](https://thirdweb.com/templates)
 - [YouTube](https://www.youtube.com/c/thirdweb)
 - [Blog](https://blog.thirdweb.com)
+
+## Testing
+
+### E2E Testing
+
+This E2E test suite uses AI to reduce the work and overhead needed.
+
+It uses this [open sourced framework called shortest](https://github.com/anti-work/shortest). You can visit the main website here called [shortest.com](https://shortest.com).
+
+How this works under the hood is that it uses Anthropics new "Computer use" paradigm where it takes screenshots, translates that into tokens, and overlays pixel based coordinates to do tasks - which is pretty cool.
+See more on [this here](https://docs.anthropic.com/en/docs/build-with-claude/computer-use).
+
+#### Running Test Scripts
+
+```bash
+pnpm run ai-e2e-testing
+
+pnpm run ai-e2e-testing:ci
+
+```
+
+You'll want to make sure the --headless flag is on if running said tests in a CI/CD pipeline.
